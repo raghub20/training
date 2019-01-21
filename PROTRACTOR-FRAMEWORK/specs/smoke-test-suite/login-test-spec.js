@@ -1,14 +1,10 @@
 
-var LoginPage = require('./../pages/login-page.js');
-var login;
-
 describe("Login module test suite", function(){
 
 	
 	beforeAll(function(){
 		//prerequisites of testsuite
 		browser.manage().window().maximize();
-		login = new LoginPage();
 	});
 
 	beforeEach(function(){
@@ -18,19 +14,27 @@ describe("Login module test suite", function(){
 
 	it("Testcase01: Verify login functionality with valid data", function(){
 
-		login.enterUsername(browser.params.username);
-		login.enterPassword(browser.params.password);
-		login.enterUserdescription("angular");
+		//enter username driver.findElement(By.css('value'))
+		element(by.model("Auth.user.name")).sendKeys(browser.params.username);
+		//enter password
+		element(by.model("Auth.user.password")).sendKeys(browser.params.password);
+		//enter user description
+		element(by.id("formly_1_input_username_0")).sendKeys("Angular");
+		element(by.partialButtonText("Login")).click();
 		browser.sleep(3000);
+
 		//Verify the test result
 		var expectedMessage = "You're logged in!!";
-		var actualMessage = login.getLoginErrorMessage();
+		var actualMessage = element(by.xpath('//p[contains(text(), "logged in")]')).getText();
 
 		expect(expectedMessage).toEqual(actualMessage);
 	});
 
 	it("Testcase01: Verify login functionality with invalid data", function(){
-		
+		//protractor code.
+		//browser.manage().window().maximize();
+		//browser.get("http://www.way2automation.com/angularjs-protractor/registeration/#/login");
+		//enter username driver.findElement(By.css('value'))
 		element(by.model("Auth.user.name")).sendKeys("angular1");
 		//enter password
 		element(by.model("Auth.user.password")).sendKeys("password1");
