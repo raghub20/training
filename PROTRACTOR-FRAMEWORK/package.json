@@ -1,11 +1,21 @@
 {
   "name": "protractor-framework",
   "version": "1.0.0",
-  "description": "Protractor training",
+  "description": "Demo framework",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "protractor",
+    "jasmine"
+  ],
+  "author": "Raghu",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.3.1",
+    "jasmine-console-reporter": "^3.1.0",
+    "protractor": "^5.4.2",
+    "protractor-pretty-html-reporter": "0.0.16"
+  }
 }
